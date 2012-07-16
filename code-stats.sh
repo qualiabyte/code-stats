@@ -17,7 +17,9 @@ EXCLUDE="(node_modules|jquery|underscore|require|mustache.js|order.js|text.js)"
 
 # Filetypes to count.
 TYPES=(
-                      ## Top languages (Github)
+
+  ## Top languages (Github)
+
   js coffee           # Javascript
   rb erb              # Ruby
   py                  # Python
@@ -28,20 +30,25 @@ TYPES=(
   cpp cc cxx          # C++
   pl pm t ep          # Perl
   m mm                # Objective-C
-                      ## More languages
+
+  ## More languages
+
   asm                 # Assembly
   clj                 # Clojure
   go                  # Go
   lisp                # Lisp
   hs                  # Haskell
-  scm                 # Scheme
   pde                 # Processing
-                      ## Web and docs
+  scm                 # Scheme
+
+  ## Web and docs
+
   html htm xhtml      # Markup
   css                 # Styles
   mustache            # Templates
   less sass stylus    # Preprocessed CSS
   md markdown         # Docs
+
 )
 
 showVersion() {
