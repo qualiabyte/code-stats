@@ -62,12 +62,15 @@ version
 showHelp() {
   cat <<-help
 
-  Usage: code-stats [options]
+  Usage: code-stats [options] [<paths>]
+
+    <paths>                 Paths to search; defaults to '*'.
 
   Options:
-    -d, --debug    Enable debug; shows processed filenames.
-    -h, --help     Show this help info.
-    -v, --version  Show the code-stats version.
+    -d, --debug             Enable debug; shows processed filenames.
+    -h, --help              Show this help info.
+    -v, --version           Show the code-stats version.
+    -x, --exclude <pattern> Exclude files by regular expression.
 
 help
 }
@@ -98,7 +101,7 @@ countLines() {
 printCounts() {
 
   # Find all source files.
-  local sourceFiles=$( findSourceFiles * )
+  local sourceFiles=$( findSourceFiles "$PATHS" )
 
   # For each extension type...
   for ext in ${TYPES[@]}; do
@@ -129,11 +132,19 @@ getOpts() {
   while [[ "$1" == -* ]]; do
     case "$1" in
       -d | --debug   ) DEBUG=1; shift ;;
-      -h | --help    ) showHelp; exit 0; ;;
+      -h | --help    ) showHelp; exit 0 ;;
       -v | --version ) showVersion; exit 0 ;;
+      -x | --exclude ) EXCLUDE="$2"; shift; shift ;;
       *              ) shift ;;
     esac
   done
+
+  # Any remaining arguments become search paths.
+  test "$1" && \
+    PATHS="$@"
+
+  # Debug options.
+  debug "PATHS: $PATHS"
 }
 
 main() {
