@@ -1,0 +1,16 @@
+{
+  "author": "Tyler Florez <qualiabyte@gmail.com>",
+  "name": "code-stats",
+  "description": "Show code statisitics for your project.",
+  "version": "0.0.1",
+  "repository": {
+    "url": "https://github.com/qualiabyte/code-stats"
+  },
+  "bin": "./code-stats",
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
