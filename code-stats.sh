@@ -89,8 +89,6 @@ findSourceFiles() {
   local paths="$@"
   local allExts=$( echo "\(${TYPES[@]}\)" | sed 's/ /\\|/g' )
   find $paths -type f -iregex ".*\.$allExts\$" | egrep -v "$EXCLUDE"
-  debug "paths: $paths"
-  debug "allExts: $allExts"
 }
 
 countLines() {
@@ -145,6 +143,8 @@ getOpts() {
 
   # Debug options.
   debug "PATHS: $PATHS"
+  debug "TYPES: ${TYPES[@]}"
+  debug "EXCLUDE: $EXCLUDE"
 }
 
 main() {
