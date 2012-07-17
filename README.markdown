@@ -7,21 +7,22 @@ Show code statistics for your project.
 
 For example, running code-stats on its own directory:
 
-    $ code-stats -x 'test/fixtures|node_modules'
+    $ code-stats --exclude 'test/fixtures'
 
      Filetype | Line count
     -----------------------
-           sh | 162
-     markdown | 74
-       coffee | 24
+           sh | 171
+     markdown | 75
+       coffee | 47
          json | 23
     ~~~~~~~~~~~~~~~~~~~~~~~
-          All | 283
+          All | 316
 
 ## Features
 
 + Reports line counts for various types of source files.
 + Optionally specify paths to include, and exclude files by pattern (see usage).
++ Excludes paths like `node_modules` by default.
 + Supports the following filetypes:
 
         ## Top languages (Github)                     ## More languages
@@ -61,15 +62,15 @@ Just run `code-stats` within your project directory:
 
 Run `code-stats -h` to see the available options:
 
-    $ code-stats -h
+    Usage: code-stats [options] [<paths>]
 
-      Usage: code-stats [options] [<paths>]
+      <paths>                      Paths to search; defaults to '*'.
 
-        <paths>                 Paths to search; defaults to '*'.
+    Options:
 
-      Options:
-        -d, --debug             Enable debug; shows processed filenames.
-        -h, --help              Show this help info.
-        -v, --version           Show the code-stats version.
-        -x, --exclude <pattern> Exclude files by regular expression.
+      -d, --debug                  Enable debug; shows processed filenames.
+      -h, --help                   Show this help info.
+      -v, --version                Show the code-stats version.
+      -x, --exclude <pattern>      Exclude files by regex, along with defaults.
+      -X, --exclude-only <pattern> Exclude files by regex, instead of defaults.
 
