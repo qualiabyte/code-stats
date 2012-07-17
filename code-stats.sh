@@ -76,8 +76,8 @@ help
 }
 
 debug() {
-  test "$DEBUG" -a "$1" && \
-    echo "$1" >&2
+  test "$DEBUG" -a "$*" && \
+    echo "$@" >&2
 }
 
 printHeader() {
