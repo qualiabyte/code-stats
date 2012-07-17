@@ -43,12 +43,16 @@ TYPES=(
 
   ## Web and docs
 
-  html htm xhtml      # Markup
+  html htm xhtml xml  # Markup
   css                 # Styles
   mustache            # Templates
   less sass stylus    # Preprocessed CSS
   md markdown         # Docs
 
+  ## Config
+
+  cfg ini             # Settings
+  json yml            # Serialized
 )
 
 showVersion() {
