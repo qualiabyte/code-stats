@@ -4,7 +4,7 @@
 # Show code statistics for your project.
 
 # Script version.
-VERSION='0.0.1'
+VERSION='0.1.1'
 
 # Debug off by default.
 DEBUG=
@@ -13,7 +13,8 @@ DEBUG=
 PATHS=*
 
 # Pattern of filenames to exclude.
-EXCLUDE="(node_modules|jquery|underscore|require|mustache.js|order.js|text.js)"
+EXCLUDE='^$'
+DEFAULT_EXCLUDE='node_modules|jquery|underscore|mustache.js|require|order.js|text.js'
 
 # Filetypes to count.
 TYPES=(
@@ -68,13 +69,15 @@ showHelp() {
 
   Usage: code-stats [options] [<paths>]
 
-    <paths>                 Paths to search; defaults to '*'.
+    <paths>                      Paths to search; defaults to '*'.
 
   Options:
-    -d, --debug             Enable debug; shows processed filenames.
-    -h, --help              Show this help info.
-    -v, --version           Show the code-stats version.
-    -x, --exclude <pattern> Exclude files by regular expression.
+
+    -d, --debug                  Enable debug; shows processed filenames.
+    -h, --help                   Show this help info.
+    -v, --version                Show the code-stats version.
+    -x, --exclude <pattern>      Exclude files by regex, along with defaults.
+    -X, --exclude-only <pattern> Exclude files by regex, instead of defaults.
 
 help
 }
@@ -93,7 +96,9 @@ printHeader() {
 findSourceFiles() {
   local paths="$@"
   local allExts=$( echo "\(${TYPES[@]}\)" | sed 's/ /\\|/g' )
-  find $paths -type f -iregex ".*\.$allExts\$" | egrep -v "$EXCLUDE"
+  find $paths -type f -iregex ".*\.$allExts\$" \
+    | egrep -v "$EXCLUDE" \
+    | egrep -v "$DEFAULT_EXCLUDE"
 }
 
 countLines() {
@@ -134,11 +139,12 @@ printBody() {
 getOpts() {
   while [[ "$1" == -* ]]; do
     case "$1" in
-      -d | --debug   ) DEBUG=1; shift ;;
-      -h | --help    ) showHelp; exit 0 ;;
-      -v | --version ) showVersion; exit 0 ;;
-      -x | --exclude ) EXCLUDE="$2"; shift; shift ;;
-      *              ) shift ;;
+      -d | --debug        ) DEBUG=1; shift ;;
+      -h | --help         ) showHelp; exit 0 ;;
+      -v | --version      ) showVersion; exit 0 ;;
+      -x | --exclude      ) EXCLUDE="$2"; shift; shift ;;
+      -X | --exclude-only ) EXCLUDE="$2"; DEFAULT_EXCLUDE='^$'; shift; shift ;;
+      *                   ) shift ;;
     esac
   done
 
@@ -150,6 +156,7 @@ getOpts() {
   debug "PATHS: $PATHS"
   debug "TYPES: ${TYPES[@]}"
   debug "EXCLUDE: $EXCLUDE"
+  debug "DEFAULT_EXCLUDE: $DEFAULT_EXCLUDE"
 }
 
 main() {
