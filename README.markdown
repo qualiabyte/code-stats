@@ -7,15 +7,16 @@ Show code statistics for your project.
 
 For example, running code-stats on its own directory:
 
-    $ code-stats
+    $ code-stats -x 'test/fixtures|node_modules'
 
      Filetype | Line count
     -----------------------
            sh | 162
-     markdown | 71
-         json | 16
+     markdown | 74
+       coffee | 24
+         json | 23
     ~~~~~~~~~~~~~~~~~~~~~~~
-          All | 249
+          All | 283
 
 ## Features
 
