@@ -81,6 +81,7 @@ debug() {
 }
 
 printHeader() {
+  echo ""
   echo " Filetype | Line count"
   echo "-----------------------"
 }
