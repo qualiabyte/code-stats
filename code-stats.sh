@@ -4,7 +4,7 @@
 # Show code statistics for your project.
 
 # Script version.
-VERSION='0.1.1'
+VERSION='0.1.2'
 
 # Debug off by default.
 DEBUG=
