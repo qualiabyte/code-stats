@@ -46,7 +46,7 @@ TYPES=(
 
   html htm xhtml xml  # Markup
   css                 # Styles
-  mustache            # Templates
+  mustache haml jade  # Templates
   less sass stylus    # Preprocessed CSS
   md markdown         # Docs
 

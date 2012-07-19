@@ -42,7 +42,7 @@ For example, running code-stats on its own directory:
         ---------------------------------------       ----------------------------------
         html htm xhtml xml  # Markup                  cfg ini             # Settings
         css                 # Styles                  json yml            # Serialized
-        mustache            # Templates
+        mustache haml jade  # Templates
         less sass stylus    # Preprocessed CSS
         md markdown         # Docs
 
