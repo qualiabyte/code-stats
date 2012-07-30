@@ -96,7 +96,8 @@ printHeader() {
 findSourceFiles() {
   local paths="$@"
   local allExts=$( echo "\(${TYPES[@]}\)" | sed 's/ /\\|/g' )
-  find $paths -type f -iregex ".*\.$allExts\$" \
+  find $paths -type f \
+    | grep "\.$allExts\$" \
     | egrep -v "$EXCLUDE" \
     | egrep -v "$DEFAULT_EXCLUDE"
 }
