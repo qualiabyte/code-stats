@@ -31,6 +31,9 @@ TYPES=(
   cpp cc cxx          # C++
   pl pm t ep          # Perl
   m mm                # Objective-C
+  ts                  # TypeScript
+  swift               # Swift
+  scala               # Scala
 
   ## More languages
 
