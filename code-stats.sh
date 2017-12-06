@@ -44,7 +44,8 @@ TYPES=(
   hs                  # Haskell
   pde                 # Processing
   scm                 # Scheme
-
+  proto               # Protocol Buffers
+  
   ## Web and docs
 
   html htm xhtml xml  # Markup
