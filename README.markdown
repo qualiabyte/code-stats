@@ -34,7 +34,7 @@ For example, running code-stats on its own directory:
         java                # Java                    hs                  # Haskell
         php                 # Php                     pde                 # Processing
         c h                 # C                       scm                 # Scheme
-        cpp cc cxx          # C++
+        cpp cc cxx          # C++                     proto               # Protocol Buffers
         pl pm t ep          # Perl
         m mm                # Objective-C
 
