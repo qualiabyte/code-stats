@@ -7,16 +7,16 @@ Show code statistics for your project.
 
 For example, running code-stats on its own directory:
 
-    $ code-stats --exclude 'test/fixtures'
+    $ code-stats --exclude 'test/fixtures|package-lock.json'
 
      Filetype | Line count
     -----------------------
-           sh | 171
-     markdown | 75
-       coffee | 47
-         json | 23
+           sh | 177
+           js | 98
+     markdown | 76
+         json | 22
     ~~~~~~~~~~~~~~~~~~~~~~~
-          All | 316
+          All | 373
 
 ## Features
 
@@ -71,6 +71,8 @@ Run `code-stats -h` to see the available options:
       -d, --debug                  Enable debug; shows processed filenames.
       -h, --help                   Show this help info.
       -v, --version                Show the code-stats version.
+      -t, --types <extensions>      File extensions to search, along with defaults (space separated list).
+      -T, --types-only <extensions> File extensions to search, instead of defaults (space separated list).
       -x, --exclude <pattern>      Exclude files by regex, along with defaults.
       -X, --exclude-only <pattern> Exclude files by regex, instead of defaults.
 
