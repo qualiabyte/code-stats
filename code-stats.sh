@@ -51,7 +51,7 @@ TYPES=(
   html htm xhtml xml  # Markup
   css                 # Styles
   mustache haml jade  # Templates
-  less sass styl      # Preprocessed CSS
+  less sass scss styl # Preprocessed CSS
   md markdown         # Docs
 
   ## Config
@@ -63,7 +63,7 @@ TYPES=(
 showVersion() {
   cat <<-version
 
-  code-stats $VERSION
+  code-stats ${VERSION}
 
 version
 }
@@ -100,7 +100,7 @@ printHeader() {
 findSourceFiles() {
   local paths="$@"
   local allExts=$( echo "\(${TYPES[@]}\)" | sed 's/ /\\|/g' )
-  find $paths -type f \
+  find ${paths} -type f \
     | grep "\.$allExts\$" \
     | egrep -v "$EXCLUDE" \
     | egrep -v "$DEFAULT_EXCLUDE"
@@ -125,7 +125,7 @@ printCounts() {
     debug "$files"
 
     # Print type and line count.
-    printf "% 9s | %s\n" $ext $count
+    printf "% 9s | %s\n" ${ext} ${count}
   done
 }
 

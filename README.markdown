@@ -43,7 +43,7 @@ For example, running code-stats on its own directory:
         html htm xhtml xml  # Markup                  cfg ini             # Settings
         css                 # Styles                  json yml            # Serialized
         mustache haml jade  # Templates
-        less sass styl      # Preprocessed CSS
+        less sass scss styl # Preprocessed CSS
         md markdown         # Docs
 
 ## Installation
