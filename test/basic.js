@@ -31,6 +31,7 @@ describe('code-stats', () => {
         });
     });
 
+
     describe('-x, --exclude <pattern>', () => {
         it('should exclude files in addition to defaults', (done) => {
             exec("./code-stats -x 'js|java' test/fixtures", (err, stdout) => {
@@ -44,6 +45,50 @@ describe('code-stats', () => {
      scss | 10
 ~~~~~~~~~~~~~~~~~~~~~~~
       All | 2410
+`;
+                stdout.should.equal(expected);
+                done();
+            });
+        });
+    });
+
+
+    describe('-t, --types <extensions>', () => {
+        it('should add custom file types in addition to defaults', (done) => {
+            exec("./code-stats -t 'ext1 ext2' test/fixtures", (err, stdout) => {
+                should.not.exist(err);
+                const expected = `
+ Filetype | Line count
+-----------------------
+       js | 1000
+        c | 900
+       rb | 800
+       py | 700
+     java | 600
+     scss | 10
+     ext1 | 10
+     ext2 | 5
+~~~~~~~~~~~~~~~~~~~~~~~
+      All | 4025
+`;
+                stdout.should.equal(expected);
+                done();
+            });
+        });
+    });
+
+
+    describe('-T, --types-only <extensions>', () => {
+        it('should search only custom file types', (done) => {
+            exec("./code-stats --types-only 'ext1 ext2' test/fixtures", (err, stdout) => {
+                should.not.exist(err);
+                const expected = `
+ Filetype | Line count
+-----------------------
+     ext1 | 10
+     ext2 | 5
+~~~~~~~~~~~~~~~~~~~~~~~
+      All | 15
 `;
                 stdout.should.equal(expected);
                 done();
