@@ -77,11 +77,13 @@ showHelp() {
 
   Options:
 
-    -d, --debug                  Enable debug; shows processed filenames.
-    -h, --help                   Show this help info.
-    -v, --version                Show the code-stats version.
-    -x, --exclude <pattern>      Exclude files by regex, along with defaults.
-    -X, --exclude-only <pattern> Exclude files by regex, instead of defaults.
+    -d, --debug                   Enable debug; shows processed filenames.
+    -h, --help                    Show this help info.
+    -v, --version                 Show the code-stats version.
+    -t, --types <extensions>      File extensions to search, along with defaults (space separated list).
+    -T, --types-only <extensions> File extensions to search, instead of defaults (space separated list).
+    -x, --exclude <pattern>       Exclude files by regex, along with defaults.
+    -X, --exclude-only <pattern>  Exclude files by regex, instead of defaults.
 
 help
 }
@@ -112,7 +114,6 @@ countLines() {
 }
 
 printCounts() {
-
   # Find all source files.
   local sourceFiles=$( findSourceFiles "$PATHS" )
 
@@ -147,6 +148,8 @@ getOpts() {
       -d | --debug        ) DEBUG=1; shift ;;
       -h | --help         ) showHelp; exit 0 ;;
       -v | --version      ) showVersion; exit 0 ;;
+      -t | --types        ) TYPES+=("$2"); shift; shift ;;
+      -T | --types-only   ) TYPES=("$2"); shift; shift ;;
       -x | --exclude      ) EXCLUDE="$2"; shift; shift ;;
       -X | --exclude-only ) EXCLUDE="$2"; DEFAULT_EXCLUDE='^$'; shift; shift ;;
       *                   ) shift ;;
