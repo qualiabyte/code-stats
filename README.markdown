@@ -64,7 +64,7 @@ Run `code-stats -h` to see the available options:
 
     Usage: code-stats [options] [<paths>]
 
-      <paths>                      Paths to search; defaults to '*'.
+      <paths>                       Paths to search; defaults to '*'.
 
     Options:
 
