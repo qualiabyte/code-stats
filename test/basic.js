@@ -21,8 +21,9 @@ describe('code-stats', () => {
        rb | 800
        py | 700
      java | 600
+     scss | 10
 ~~~~~~~~~~~~~~~~~~~~~~~
-      All | 4000
+      All | 4010
 `;
                 stdout.should.equal(expected);
                 done();
@@ -40,8 +41,9 @@ describe('code-stats', () => {
         c | 900
        rb | 800
        py | 700
+     scss | 10
 ~~~~~~~~~~~~~~~~~~~~~~~
-      All | 2400
+      All | 2410
 `;
                 stdout.should.equal(expected);
                 done();
