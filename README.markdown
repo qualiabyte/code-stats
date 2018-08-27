@@ -68,11 +68,11 @@ Run `code-stats -h` to see the available options:
 
     Options:
 
-      -d, --debug                  Enable debug; shows processed filenames.
-      -h, --help                   Show this help info.
-      -v, --version                Show the code-stats version.
+      -d, --debug                   Enable debug; shows processed filenames.
+      -h, --help                    Show this help info.
+      -v, --version                 Show the code-stats version.
       -t, --types <extensions>      File extensions to search, along with defaults (space separated list).
       -T, --types-only <extensions> File extensions to search, instead of defaults (space separated list).
-      -x, --exclude <pattern>      Exclude files by regex, along with defaults.
-      -X, --exclude-only <pattern> Exclude files by regex, instead of defaults.
+      -x, --exclude <pattern>       Exclude files by regex, along with defaults.
+      -X, --exclude-only <pattern>  Exclude files by regex, instead of defaults.
 
