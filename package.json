@@ -6,17 +6,16 @@
   "repository": {
     "url": "https://github.com/qualiabyte/code-stats"
   },
-  "bin": { "code-stats": "./code-stats.sh" },
+  "bin": {
+    "code-stats": "./code-stats.sh"
+  },
   "scripts": {
     "test": "mocha"
   },
-  "dependencies": {},
   "devDependencies": {
-    "coffee-script": "~1.3.3",
-    "mocha": "~1.3.0",
-    "should": "~0.6.0"
+    "mocha": "5.2.0",
+    "should": "13.2.3"
   },
-  "optionalDependencies": {},
   "engines": {
     "node": ">= 0.6"
   }
