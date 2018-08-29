@@ -11,7 +11,7 @@ describe('sanity check', () => {
 describe('code-stats', () => {
     describe('code-stats <paths>', () => {
         it('should show line counts for each type', (done) => {
-            exec('./code-stats test/fixtures', (err, stdout) => {
+            exec('bash code-stats test/fixtures', (err, stdout) => {
                 should.not.exist(err);
                 const expected = `
  Filetype | Line count
@@ -34,7 +34,7 @@ describe('code-stats', () => {
 
     describe('-x, --exclude <pattern>', () => {
         it('should exclude files in addition to defaults', (done) => {
-            exec("./code-stats -x 'js|java' test/fixtures", (err, stdout) => {
+            exec('bash code-stats -x "js|java" test/fixtures', (err, stdout) => {
                 should.not.exist(err);
                 const expected = `
  Filetype | Line count
@@ -55,7 +55,7 @@ describe('code-stats', () => {
 
     describe('-t, --types <extensions>', () => {
         it('should add custom file types in addition to defaults', (done) => {
-            exec("./code-stats -t 'ext1 ext2' test/fixtures", (err, stdout) => {
+            exec('bash code-stats -t "ext1 ext2" test/fixtures', (err, stdout) => {
                 should.not.exist(err);
                 const expected = `
  Filetype | Line count
@@ -80,7 +80,7 @@ describe('code-stats', () => {
 
     describe('-T, --types-only <extensions>', () => {
         it('should search only custom file types', (done) => {
-            exec("./code-stats --types-only 'ext1 ext2' test/fixtures", (err, stdout) => {
+            exec('bash code-stats --types-only "ext1 ext2" test/fixtures', (err, stdout) => {
                 should.not.exist(err);
                 const expected = `
  Filetype | Line count
