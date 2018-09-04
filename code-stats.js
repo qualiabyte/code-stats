@@ -5,7 +5,7 @@
 // code-stats.js
 // Show code statistics for your project.
 
-const {execSync} = require('child_process')
+const { execSync } = require('child_process')
 const fs = require('fs')
 
 // Script version.
@@ -16,7 +16,7 @@ var DEBUG = false
 
 // Paths defaults to all visible in current dir.
 var PATHS = []
-var DEFAULT_PATHS= ['*']
+var DEFAULT_PATHS = ['*']
 
 // Pattern of filenames to exclude.
 var EXCLUDE = '^$'
@@ -127,7 +127,7 @@ function printSorted() {
 }
 
 function findSourceFiles(paths) {
-  let result = execSync(`find ${paths.join(' ')} -type f`, {encoding: 'utf8'})
+  let result = execSync(`find ${paths.join(' ')} -type f`, { encoding: 'utf8' })
   let filenames = result.split("\n")
 
   let regex1 = new RegExp('\\.(' + TYPES.join('|') + ')$')
@@ -151,10 +151,10 @@ function countLines(file) {
     let stream = fs.createReadStream(file)
       .on('data', (chunk) => {
         for (let i = 0; i < chunk.length; i++) {
-            let curr = chunk[i]
-            let next = i+1 < chunk.length ? chunk[i+1] : null
-            if (curr == RETURN || curr == NEWLINE) count++
-            if (curr == RETURN && next == NEWLINE) i++
+          let curr = chunk[i]
+          let next = i+1 < chunk.length ? chunk[i+1] : null
+          if (curr == RETURN || curr == NEWLINE) count++
+          if (curr == RETURN && next == NEWLINE) i++
         }
       })
       .on('end', () =>
@@ -200,7 +200,7 @@ async function printCounts() {
   // Print counts for types.
   for (let result of results) {
     if (result.count == 0) continue
-    let pad  = '         '
+    let pad = '         '
     let left = (pad + result.type).slice(-9)
     let line = left + " | " + result.count
     log(line)

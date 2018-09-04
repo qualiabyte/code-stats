@@ -1,19 +1,19 @@
-const assert = require('assert');
-const should = require('should');
-const {exec} = require('child_process');
+const assert = require('assert')
+const should = require('should')
+const { exec } = require('child_process')
 
 describe('sanity check', () => {
-    it('should pass', () => {
-        assert(1 + 1 === 2);
-    });
-});
+  it('should pass', () => {
+    assert(1 + 1 === 2)
+  })
+})
 
 describe('code-stats', () => {
-    describe('code-stats <paths>', () => {
-        it('should show line counts for each type', (done) => {
-            exec('node code-stats test/fixtures', (err, stdout) => {
-                should.not.exist(err);
-                const expected = `
+  describe('code-stats <paths>', () => {
+    it('should show line counts for each type', (done) => {
+      exec('node code-stats test/fixtures', (err, stdout) => {
+        should.not.exist(err)
+        const expected = `
  Filetype | Line count
 -----------------------
        js | 1000
@@ -24,19 +24,19 @@ describe('code-stats', () => {
      scss | 10
 ~~~~~~~~~~~~~~~~~~~~~~~
       All | 4010
-`;
-                stdout.should.equal(expected);
-                done();
-            });
-        });
-    });
+`
+        stdout.should.equal(expected)
+        done()
+      })
+    })
+  })
 
 
-    describe('-x, --exclude <pattern>', () => {
-        it('should exclude files in addition to defaults', (done) => {
-            exec('node code-stats -x "js|java" test/fixtures', (err, stdout) => {
-                should.not.exist(err);
-                const expected = `
+  describe('-x, --exclude <pattern>', () => {
+    it('should exclude files in addition to defaults', (done) => {
+      exec('node code-stats -x "js|java" test/fixtures', (err, stdout) => {
+        should.not.exist(err)
+        const expected = `
  Filetype | Line count
 -----------------------
         c | 900
@@ -45,19 +45,19 @@ describe('code-stats', () => {
      scss | 10
 ~~~~~~~~~~~~~~~~~~~~~~~
       All | 2410
-`;
-                stdout.should.equal(expected);
-                done();
-            });
-        });
-    });
+`
+        stdout.should.equal(expected)
+        done()
+      })
+    })
+  })
 
 
-    describe('-t, --types <extensions>', () => {
-        it('should add custom file types in addition to defaults', (done) => {
-            exec('node code-stats -t "ext1 ext2" test/fixtures', (err, stdout, stderr) => {
-                should.not.exist(err);
-                const expected = `
+  describe('-t, --types <extensions>', () => {
+    it('should add custom file types in addition to defaults', (done) => {
+      exec('node code-stats -t "ext1 ext2" test/fixtures', (err, stdout, stderr) => {
+        should.not.exist(err)
+        const expected = `
  Filetype | Line count
 -----------------------
        js | 1000
@@ -70,29 +70,29 @@ describe('code-stats', () => {
      ext2 | 5
 ~~~~~~~~~~~~~~~~~~~~~~~
       All | 4025
-`;
-                stdout.should.equal(expected);
-                done();
-            });
-        });
-    });
+`
+        stdout.should.equal(expected)
+        done()
+      })
+    })
+  })
 
 
-    describe('-T, --types-only <extensions>', () => {
-        it('should search only custom file types', (done) => {
-            exec('node code-stats --types-only "ext1 ext2" test/fixtures', (err, stdout) => {
-                should.not.exist(err);
-                const expected = `
+  describe('-T, --types-only <extensions>', () => {
+    it('should search only custom file types', (done) => {
+      exec('node code-stats --types-only "ext1 ext2" test/fixtures', (err, stdout) => {
+        should.not.exist(err)
+        const expected = `
  Filetype | Line count
 -----------------------
      ext1 | 10
      ext2 | 5
 ~~~~~~~~~~~~~~~~~~~~~~~
       All | 15
-`;
-                stdout.should.equal(expected);
-                done();
-            });
-        });
-    });
-});
+`
+        stdout.should.equal(expected)
+        done()
+      })
+    })
+  })
+})
