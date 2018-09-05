@@ -2,12 +2,12 @@
   "author": "Tyler Florez <qualiabyte@gmail.com>",
   "name": "code-stats",
   "description": "Show code statistics for your project.",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "repository": {
     "url": "https://github.com/qualiabyte/code-stats"
   },
   "bin": {
-    "code-stats": "./code-stats.sh"
+    "code-stats": "./code-stats.js"
   },
   "scripts": {
     "test": "mocha"
@@ -17,6 +17,6 @@
     "should": "13.2.3"
   },
   "engines": {
-    "node": ">= 0.6"
+    "node": ">= 8.0.0"
   }
 }

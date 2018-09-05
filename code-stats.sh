@@ -4,7 +4,7 @@
 # Show code statistics for your project.
 
 # Script version.
-VERSION='0.1.3'
+VERSION='0.1.5'
 
 # Debug off by default.
 DEBUG=
@@ -45,7 +45,7 @@ TYPES=(
   pde                 # Processing
   scm                 # Scheme
   proto               # Protocol Buffers
-  
+
   ## Web and docs
 
   html htm xhtml xml  # Markup
