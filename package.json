@@ -1,8 +1,8 @@
 {
   "author": "Tyler Florez <qualiabyte@gmail.com>",
   "name": "code-stats",
-  "description": "Show code statisitics for your project.",
-  "version": "0.1.3",
+  "description": "Show code statistics for your project.",
+  "version": "0.1.5",
   "repository": {
     "url": "https://github.com/qualiabyte/code-stats"
   },
