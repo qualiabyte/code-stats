@@ -100,13 +100,14 @@ function showHelp() {
 
   Options:
 
+    -a, --all                     Include files of all types.
     -d, --debug                   Enable debug; shows processed filenames.
     -h, --help                    Show this help info.
-    -v, --version                 Show the code-stats version.
     -t, --types <extensions>      File extensions to search, along with defaults (space separated list).
     -T, --types-only <extensions> File extensions to search, instead of defaults (space separated list).
     -x, --exclude <pattern>       Exclude files by regex, along with defaults.
     -X, --exclude-only <pattern>  Exclude files by regex, instead of defaults.
+    -v, --version                 Show the code-stats version.
 `
   log(message)
 }
@@ -215,7 +216,7 @@ function getOpts() {
   for (let i = 2; i < process.argv.length; i++) {
     let arg = process.argv[i]
     switch (arg) {
-      case '-a': case '--any':          { TYPES = ['.*']; break }
+      case '-a': case '--all':          { TYPES = ['.*']; break }
       case '-d': case '--debug':        { DEBUG = true; break }
       case '-h': case '--help':         { showHelp(); process.exit(0) }
       case '-v': case '--version':      { showVersion(); process.exit(0) }

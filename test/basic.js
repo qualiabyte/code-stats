@@ -31,6 +31,30 @@ describe('code-stats', () => {
     })
   })
 
+  describe('-a, --all', () => {
+    it('should include files of all types', (done) => {
+      exec('node code-stats --all test/fixtures', (err, stdout) => {
+        should.not.exist(err)
+        const expected = `
+ Filetype | Line count
+-----------------------
+       js | 1000
+        c | 900
+       rb | 800
+       py | 700
+     java | 600
+     scss | 10
+     ext1 | 10
+     ext2 | 5
+~~~~~~~~~~~~~~~~~~~~~~~
+      All | 4025
+`
+        stdout.should.equal(expected)
+        done()
+      })
+    })
+  })
+
 
   describe('-x, --exclude <pattern>', () => {
     it('should exclude files in addition to defaults', (done) => {
