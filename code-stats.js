@@ -101,12 +101,12 @@ function showHelp() {
   Options:
 
     -a, --all                     Include files of all types.
-    -d, --debug                   Enable debug; shows processed filenames.
+    -d, --debug                   Debug options, files, and counts.
     -h, --help                    Show this help info.
     -t, --types <extensions>      File extensions to search, along with defaults (space separated list).
     -T, --types-only <extensions> File extensions to search, instead of defaults (space separated list).
-    -x, --exclude <pattern>       Exclude files by regex, along with defaults.
-    -X, --exclude-only <pattern>  Exclude files by regex, instead of defaults.
+    -x, --exclude <pattern>       Exclude files, along with defaults (regex).
+    -X, --exclude-only <pattern>  Exclude files, instead of defaults (regex).
     -v, --version                 Show the code-stats version.
 `
   log(message)
