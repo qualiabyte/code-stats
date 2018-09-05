@@ -9,7 +9,7 @@ const { execSync } = require('child_process')
 const fs = require('fs')
 
 // Script version.
-const VERSION = '0.2.0'
+const VERSION = '0.2.1'
 
 // Debug off by default.
 var DEBUG = false
