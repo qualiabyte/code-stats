@@ -201,8 +201,7 @@ function printResults({ linesByType, filesByType, totalLines, totalFiles }: Code
     .map(type => ({
       type,
       files: filesByType[type],
-      lines: linesByType[type],
-      percent: linesByType[type] / totalLines
+      lines: linesByType[type]
     }))
     .sort((a, b) =>
       a.lines != b.lines
