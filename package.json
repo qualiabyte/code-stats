@@ -2,7 +2,7 @@
   "author": "Tyler Florez <qualiabyte@gmail.com>",
   "name": "code-stats",
   "description": "Show code statistics for your project.",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "repository": {
     "url": "https://github.com/qualiabyte/code-stats"
   },
@@ -10,13 +10,19 @@
     "code-stats": "./code-stats.js"
   },
   "scripts": {
-    "test": "mocha"
+    "build": "tsc",
+    "start": "tsc --watch",
+    "test": "mocha",
+    "example": "node code-stats.js --exclude \"json|test/fixtures\""
   },
   "devDependencies": {
+    "@types/node": "^12.0.1",
     "mocha": "5.2.0",
-    "should": "13.2.3"
+    "should": "13.2.3",
+    "typescript": "^3.4.5"
   },
   "engines": {
     "node": ">= 8.0.0"
-  }
+  },
+  "dependencies": {}
 }
