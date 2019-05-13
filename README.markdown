@@ -9,17 +9,19 @@ For example, running code-stats on its own directory:
 
     $ code-stats --exclude "json|test/fixtures"
 
-    Filetype | Line count
-    -----------------------
-          js | 370
-          sh | 177
-    markdown | 77
-    ~~~~~~~~~~~~~~~~~~~~~~~
-         All | 624
+    Type     | Files | Lines
+    ---------|-------|----------
+    js       | 2     | 419 (52%)
+    ts       | 1     | 309 (38%)
+    markdown | 1     | 77 (10%)
+    ---------|-------|----------
+    All      | 4     | 805
+
+The output is compatible with [Markdown table syntax](https://www.markdownguide.org/extended-syntax/#tables).
 
 ## Features
 
-+ Reports line counts for various types of source files.
++ Reports file and line counts for various types of source files.
 + Optionally specify paths to include, and exclude files by pattern (see usage).
 + Excludes paths like `node_modules` by default.
 + Supports the following filetypes:
@@ -36,6 +38,9 @@ For example, running code-stats on its own directory:
         cpp cc cxx          # C++                     proto               # Protocol Buffers
         pl pm t ep          # Perl
         m mm                # Objective-C
+        ts                  # TypeScript
+        swift               # Swift
+        scala               # Scala
 
         ## Web and docs                               ## Config
         ---------------------------------------       ----------------------------------

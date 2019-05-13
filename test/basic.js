@@ -14,16 +14,16 @@ describe('code-stats', () => {
       exec('node code-stats test/fixtures', (err, stdout) => {
         should.not.exist(err)
         const expected = `
- Filetype | Line count
------------------------
-       js | 1000
-        c | 900
-       rb | 800
-       py | 700
-     java | 600
-     scss | 10
-~~~~~~~~~~~~~~~~~~~~~~~
-      All | 4010
+Type | Files | Lines
+-----|-------|-----------
+js   | 2     | 1010 (25%)
+c    | 1     | 900 (22%)
+rb   | 1     | 800 (20%)
+py   | 1     | 700 (17%)
+java | 1     | 600 (15%)
+scss | 1     | 10 (0.2%)
+-----|-------|-----------
+All  | 7     | 4020
 `
         stdout.should.equal(expected)
         done()
@@ -36,18 +36,18 @@ describe('code-stats', () => {
       exec('node code-stats --all test/fixtures', (err, stdout) => {
         should.not.exist(err)
         const expected = `
- Filetype | Line count
------------------------
-       js | 1000
-        c | 900
-       rb | 800
-       py | 700
-     java | 600
-     scss | 10
-     ext1 | 10
-     ext2 | 5
-~~~~~~~~~~~~~~~~~~~~~~~
-      All | 4025
+Type | Files | Lines
+-----|-------|-----------
+js   | 2     | 1010 (25%)
+c    | 1     | 900 (22%)
+rb   | 1     | 800 (20%)
+py   | 1     | 700 (17%)
+java | 1     | 600 (15%)
+scss | 1     | 10 (0.2%)
+ext1 | 1     | 10 (0.2%)
+ext2 | 1     | 5 (0.1%)
+-----|-------|-----------
+All  | 9     | 4035
 `
         stdout.should.equal(expected)
         done()
@@ -61,14 +61,14 @@ describe('code-stats', () => {
       exec('node code-stats -x "js|java" test/fixtures', (err, stdout) => {
         should.not.exist(err)
         const expected = `
- Filetype | Line count
------------------------
-        c | 900
-       rb | 800
-       py | 700
-     scss | 10
-~~~~~~~~~~~~~~~~~~~~~~~
-      All | 2410
+Type | Files | Lines
+-----|-------|----------
+c    | 1     | 900 (37%)
+rb   | 1     | 800 (33%)
+py   | 1     | 700 (29%)
+scss | 1     | 10 (0.4%)
+-----|-------|----------
+All  | 4     | 2410
 `
         stdout.should.equal(expected)
         done()
@@ -82,18 +82,18 @@ describe('code-stats', () => {
       exec('node code-stats -t "ext1 ext2" test/fixtures', (err, stdout, stderr) => {
         should.not.exist(err)
         const expected = `
- Filetype | Line count
------------------------
-       js | 1000
-        c | 900
-       rb | 800
-       py | 700
-     java | 600
-     scss | 10
-     ext1 | 10
-     ext2 | 5
-~~~~~~~~~~~~~~~~~~~~~~~
-      All | 4025
+Type | Files | Lines
+-----|-------|-----------
+js   | 2     | 1010 (25%)
+c    | 1     | 900 (22%)
+rb   | 1     | 800 (20%)
+py   | 1     | 700 (17%)
+java | 1     | 600 (15%)
+scss | 1     | 10 (0.2%)
+ext1 | 1     | 10 (0.2%)
+ext2 | 1     | 5 (0.1%)
+-----|-------|-----------
+All  | 9     | 4035
 `
         stdout.should.equal(expected)
         done()
@@ -107,12 +107,12 @@ describe('code-stats', () => {
       exec('node code-stats --types-only "ext1 ext2" test/fixtures', (err, stdout) => {
         should.not.exist(err)
         const expected = `
- Filetype | Line count
------------------------
-     ext1 | 10
-     ext2 | 5
-~~~~~~~~~~~~~~~~~~~~~~~
-      All | 15
+Type | Files | Lines
+-----|-------|---------
+ext1 | 1     | 10 (67%)
+ext2 | 1     | 5 (33%)
+-----|-------|---------
+All  | 2     | 15
 `
         stdout.should.equal(expected)
         done()
