@@ -128,18 +128,17 @@ interface CodeStats {
 }
 
 async function collectCodeStats({ paths, types, exclude, useDefaultExclude }: Options): Promise<CodeStats> {
-  let totalFiles = 0
   let totalLines = 0
-  const linesByType: Record<string, number> = {}
   const filesByType: Record<string, number> = {}
+  const linesByType: Record<string, number> = {}
   const filenames = findSourceFiles(paths, types, exclude, useDefaultExclude)
   for (const filename of filenames) {
     const { type, lines } = await collectSourceFileCodeStats(filename)
-    totalFiles++
     totalLines += lines
     filesByType[type] = (filesByType[type] || 0) + 1
     linesByType[type] = (linesByType[type] || 0) + lines
   }
+  const totalFiles = filenames.length;
   return {
     totalFiles,
     totalLines,
@@ -170,6 +169,8 @@ function findSourceFiles(paths: string[], types: string[], exclude: string | nul
     .filter(name => typesRegex.test(name))
     .filter(name => excludeRegex ? !excludeRegex.test(name) : true)
     .filter(name => defaultExcludeRegex ? !defaultExcludeRegex.test(name) : true)
+
+  debug("Ignored files:", filenames.length - matches.length)
 
   return matches
 }

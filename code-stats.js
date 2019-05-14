@@ -109,18 +109,17 @@ function showHelp() {
     log(message);
 }
 async function collectCodeStats({ paths, types, exclude, useDefaultExclude }) {
-    let totalFiles = 0;
     let totalLines = 0;
-    const linesByType = {};
     const filesByType = {};
+    const linesByType = {};
     const filenames = findSourceFiles(paths, types, exclude, useDefaultExclude);
     for (const filename of filenames) {
         const { type, lines } = await collectSourceFileCodeStats(filename);
-        totalFiles++;
         totalLines += lines;
         filesByType[type] = (filesByType[type] || 0) + 1;
         linesByType[type] = (linesByType[type] || 0) + lines;
     }
+    const totalFiles = filenames.length;
     return {
         totalFiles,
         totalLines,
@@ -147,6 +146,7 @@ function findSourceFiles(paths, types, exclude, useDefaultExclude) {
         .filter(name => typesRegex.test(name))
         .filter(name => excludeRegex ? !excludeRegex.test(name) : true)
         .filter(name => defaultExcludeRegex ? !defaultExcludeRegex.test(name) : true);
+    debug("Ignored files:", filenames.length - matches.length);
     return matches;
 }
 const RETURN = "\r".charCodeAt(0);
