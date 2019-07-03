@@ -2,7 +2,7 @@
   "author": "Tyler Florez <qualiabyte@gmail.com>",
   "name": "code-stats",
   "description": "Show code statistics for your project.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "repository": {
     "url": "https://github.com/qualiabyte/code-stats"
   },
@@ -26,5 +26,6 @@
   },
   "dependencies": {
     "globby": "^9.2.0"
-  }
+  },
+  "license": "MIT"
 }
