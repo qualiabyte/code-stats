@@ -5,8 +5,8 @@
 // code-stats.js
 // Show code statistics for your project.
 
-import { execSync } from "child_process"
 import fs from "fs"
+import globby from "globby"
 // @ts-ignore
 import packageJson from "./package.json"
 
@@ -157,9 +157,14 @@ async function collectSourceFileCodeStats(filename: string) {
   }
 }
 
+function findFilesInPaths(paths: string[]) {
+  const options = { expandDirectories: true }
+  const filenames = globby.sync(paths, options)
+  return filenames
+}
+
 function findSourceFiles(paths: string[], types: string[], exclude: string | null, useDefaultExclude: boolean) {
-  const result = execSync(`find ${paths.join(' ')} -type f`, { encoding: 'utf8' })
-  const filenames = result.split("\n")
+  const filenames = findFilesInPaths(paths)
 
   const typesRegex = new RegExp(`\\.(${types.join("|")})$`)
   const excludeRegex = exclude && new RegExp(`(${exclude})`)

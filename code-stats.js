@@ -6,8 +6,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // code-stats.js
 // Show code statistics for your project.
-const child_process_1 = require("child_process");
 const fs_1 = __importDefault(require("fs"));
+const globby_1 = __importDefault(require("globby"));
 // @ts-ignore
 const package_json_1 = __importDefault(require("./package.json"));
 // Debug off by default.
@@ -136,9 +136,13 @@ async function collectSourceFileCodeStats(filename) {
         lines
     };
 }
+function findFilesInPaths(paths) {
+    const options = { expandDirectories: true };
+    const filenames = globby_1.default.sync(paths, options);
+    return filenames;
+}
 function findSourceFiles(paths, types, exclude, useDefaultExclude) {
-    const result = child_process_1.execSync(`find ${paths.join(' ')} -type f`, { encoding: 'utf8' });
-    const filenames = result.split("\n");
+    const filenames = findFilesInPaths(paths);
     const typesRegex = new RegExp(`\\.(${types.join("|")})$`);
     const excludeRegex = exclude && new RegExp(`(${exclude})`);
     const defaultExcludeRegex = useDefaultExclude && new RegExp(`(${DEFAULT_EXCLUDE})`);
