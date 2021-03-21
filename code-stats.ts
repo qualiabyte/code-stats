@@ -5,7 +5,7 @@
 // code-stats.js
 // Show code statistics for your project.
 
-import fs from "fs"
+import * as fs from 'fs'
 import globby from "globby"
 // @ts-ignore
 import packageJson from "./package.json"
@@ -54,6 +54,11 @@ const TYPES_MENU = `
   asm                 # Assembly
   clj                 # Clojure
   go                  # Go
+  kt                  # Kotlin
+  rs                  # Rust
+  cs csx              # C#
+  dart                # Dart
+  sql                 # SQL
   lisp                # Lisp
   hs                  # Haskell
   pde                 # Processing
@@ -72,6 +77,8 @@ const TYPES_MENU = `
 
   cfg ini             # Settings
   json yml            # Serialized
+  gradle              # Gradle
+  .rlib               # Rust Metadata
 `
 
 // Filetypes to count.
